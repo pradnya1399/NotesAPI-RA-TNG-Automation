@@ -6,8 +6,9 @@ import static org.hamcrest.Matchers.equalTo;
 public class profile {
 
 	public static void main(String[] args) {
-		login l= new login();
-		String newtoken= l.loginuser();
+		String newtoken = TokenManager.getToken();
+		
+		//System.out.println(newtoken);
 		RestAssured.given().header("x-auth-token",newtoken)
 		.header("accept","application/json")
 		.when().get("https://practice.expandtesting.com/notes/api/users/profile")

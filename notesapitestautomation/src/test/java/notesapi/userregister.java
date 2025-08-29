@@ -3,6 +3,7 @@ import io.restassured.RestAssured;
 import static org.hamcrest.Matchers.equalTo;
 public class userregister {
 	
+
 	
 	public static void register()
 	{
