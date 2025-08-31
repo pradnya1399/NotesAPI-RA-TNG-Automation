@@ -25,7 +25,7 @@ public class getnotesbyid {
 		String ID= data.get("user_id").toString();
 		//System.out.println(ID);
 		
-		assert user_id==ID:"User id not matching";
+		assert user_id.equals(ID):"User id not matching";
 		
 		long time = response.getTime();
 		assert time<2000:" response Time is slow";
