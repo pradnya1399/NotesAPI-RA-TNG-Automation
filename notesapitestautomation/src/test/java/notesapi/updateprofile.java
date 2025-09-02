@@ -6,14 +6,22 @@ import io.restassured.response.Response;
 
 import static org.hamcrest.Matchers.equalTo;
 
+//import java.util.HashMap;
+import java.util.*;
+
 public class updateprofile {
 
 	public static void main(String[] args) {
 		String newtoken = TokenManager.getToken();
 		
+		Map<String, Object> requestbody= new HashMap<>();
+		requestbody.put("name", "pradnyabalajigaikwad");
+		requestbody.put("phone", "1234567890");
+		requestbody.put("company", "vuclip");
+		
 		Response response= RestAssured.given().header("x-auth-token",newtoken)
 		.contentType("application/x-www-form-urlencoded; charset=UTF-8").header("accept","application/json")
-		.formParam("name", "pradnyagaikwad").formParam("phone", "1234567890").formParam("company", "vuclip")
+		.formParams(requestbody)
 		.when().patch("https://practice.expandtesting.com/notes/api/users/profile");
 		//.then().log().all().statusCode(200).assertThat().body("message", equalTo("Profile updated successful"));
 		
@@ -27,7 +35,9 @@ public class updateprofile {
 		
 		assert response.time()<1000:"response time is slow";
 		
-
+		
+		assert js.getString("message").equals("Profile updated successful"):"message not correct";
+		
 		
 	}
 

@@ -14,9 +14,7 @@ public class deletenote {
 		.header("x-auth-token",newtoken)
 		.pathParam("id", notes.get(1))
 		.when().delete("https://practice.expandtesting.com/notes/api/notes/{id}")
-		.then().statusCode(200).assertThat().body("message", equalTo("Note successfully deleted"));
-		
-		
+		.then().statusCode(200).assertThat().body("message", equalTo("Note successfully deleted"));	
 		
 	}
 
